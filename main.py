@@ -48,8 +48,8 @@ class Listener(tweepy.StreamListener):
         except Exception as e:
             print(e)
 
-auth = tweepy.OAuthHandler("", "")
-auth.set_access_token("","")
+auth = tweepy.OAuthHandler(os.environ["CONSUMER_KEY"],os.environ["CONSUMER_SECRET"])
+auth.set_access_token(os.environ["ACCESS_TOKEN"],os.environ["ACCESS_TOKEN_SECRET"])
 
 twitter = tweepy.API(auth)
 
