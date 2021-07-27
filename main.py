@@ -79,6 +79,7 @@ stream = tweepy.Stream(auth, listener)
 
 while True:
     try:
+        print("bot starting...")
         stream.filter(track=["#oneshotgame"])
     except Exception as e:
         print(e)
