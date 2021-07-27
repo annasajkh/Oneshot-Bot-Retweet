@@ -1,5 +1,9 @@
 import tweepy
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 banned_words = ["fortnite","call of duty","callofduty","dungeonsanddragons",
 "sorare","dnd","oneshotleague","callofcthulhu"]
