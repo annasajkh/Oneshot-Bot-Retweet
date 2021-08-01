@@ -1,6 +1,12 @@
 import tweepy
 import os
+
 from dotenv import load_dotenv
+from threading import Thread
+
+from flask import Flask
+
+app = Flask('')
 
 
 load_dotenv()
@@ -77,9 +83,22 @@ twitter = tweepy.API(auth)
 listener = Listener()
 stream = tweepy.Stream(auth, listener)
 
+@app.route('/')
+def main():
+  return "your bot is alive"
+
+
+def run():
+    app.run(host="0.0.0.0", port=8080)
+
+def keep_alive():
+    server = Thread(target=run)
+    server.start()
+
+keep_alive()
+
 while True:
     try:
-        print("bot starting...")
         stream.filter(track=["#oneshotgame"])
     except Exception as e:
         print(e)
